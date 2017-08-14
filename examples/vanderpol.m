@@ -44,31 +44,32 @@ sys_opt.ScatterSim.MAX_SWITCHINGS = inf;
 
 sys_def.str = 'vanderpol';
 
-sim_fn = hybrid_system_simulator(sys_def,sys_prop,sys_opt);
-delta = 0.01;
-TH = 1
 
 %% test simulator
-figure(1)
-hold on
-t = [0];
-
-N = 10;
-cons = initConstraints()
-X0_set = cons.cube;
-X0_samples = genRandVectors(rand(N, NUM_STATE_VARS), X0_set);
-
-for i = 1:N
-    XArr = X0_samples(i, :);
-    XCumuArr = XArr;
-
-    for i = 0:delta:TH
-        [simtimeArr, XArr, MArr] = sim_fn([i i+delta], XArr, [1], [1]);
-        t = [t simtimeArr];
-        XCumuArr = [XCumuArr; XArr];
-    end
-    plot(XCumuArr(:,1), XCumuArr(:,2))
-end
+% sim_fn = hybrid_system_simulator(sys_def,sys_prop,sys_opt);
+% delta = 0.01;
+% TH = 1;
+% 
+% figure(1)
+% hold on
+% t = [0];
+% 
+% N = 10;
+% cons = initConstraints();
+% X0_set = cons.cube;
+% X0_samples = genRandVectors(rand(N, NUM_STATE_VARS), X0_set);
+% 
+% for i = 1:N
+%     XArr = X0_samples(i, :);
+%     XCumuArr = XArr;
+% 
+%     for i = 0:delta:TH
+%         [simtimeArr, XArr, MArr] = sim_fn([i i+delta], XArr, [1], [1]);
+%         t = [t simtimeArr];
+%         XCumuArr = [XCumuArr; XArr];
+%     end
+%     plot(XCumuArr(:,1), XCumuArr(:,2))
+% end
 end
 
 function plotFun(~,X,currMode,plotOpts)

@@ -72,14 +72,14 @@ sim_fn = hybrid_system_simulator(sys_def,sys_prop,sys_opt);
 %sys_def.SIM = sim_fn;
 
 %% test simulator
-test_sim = 1;
+test_sim = 0;
 if test_sim == 1
     figure(1)
     hold on
     t = [0];
     XArr = [0 0 5 10];
     XCumuArr = XArr;
-    delta = 1;
+    delta = 0.01;
     for i = 0:delta:30
         [simtimeArr, XArr, MArr] = sim_fn([i i+delta], XArr, [1], [1]);
         t = [t simtimeArr];
